@@ -1,0 +1,36 @@
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { describe, expect, it } from 'vitest';
+
+import { PopupShell } from '@/entrypoints/popup/popup-shell';
+
+describe('PopupShell', () => {
+  it('renders the first-run popup shell with setup and privacy messaging', () => {
+    const markup = renderToStaticMarkup(<PopupShell />);
+
+    expect(markup).toContain('aria-labelledby="popup-title"');
+    expect(markup).toContain('aria-label="Readiness overview"');
+    expect(markup).toContain('aria-label="Secondary actions"');
+    expect(markup).toContain('from_autofiller');
+    expect(markup).toContain('Profile status');
+    expect(markup).toContain('Privacy status');
+    expect(markup).toContain('Setup required before autofill');
+    expect(markup).toContain('Create my profile');
+    expect(markup).toContain('Your profile stays in this browser only.');
+    expect(markup).toContain('No account or cloud sync in v1.');
+    expect(markup).toContain('Report issue');
+  });
+
+  it('defines focus-visible and dark-theme styling hooks for the popup shell', () => {
+    const stylesheet = readFileSync(
+      resolve(process.cwd(), 'src/styles/tailwind.css'),
+      'utf8',
+    );
+
+    expect(stylesheet).toContain('.primary-button:focus-visible');
+    expect(stylesheet).toContain('.secondary-button:focus-visible');
+    expect(stylesheet).toContain('@media (prefers-color-scheme: dark)');
+    expect(stylesheet).toContain('--accent: #53c1cb;');
+  });
+});

@@ -1,0 +1,10 @@
+_bmad
+_bmad-output
+.agents
+docs
+node_modules
+.output
+.wxt
+dist
+.tmp-wxt
+npm-debug.log*
