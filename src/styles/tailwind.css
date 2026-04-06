@@ -29,6 +29,18 @@ body {
   color: var(--text);
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 #root {
   min-height: 100%;
 }
@@ -184,6 +196,15 @@ body {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.secondary-actions__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.secondary-actions__item button {
+  width: 100%;
 }
 
 .secondary-button {

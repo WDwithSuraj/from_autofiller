@@ -20,6 +20,14 @@ describe('PopupShell', () => {
     expect(markup).toContain('Your profile stays in this browser only.');
     expect(markup).toContain('No account or cloud sync in v1.');
     expect(markup).toContain('Report issue');
+    expect(markup).toContain('aria-describedby="popup-summary"');
+    expect(markup).toContain('id="status-grid-summary"');
+    expect(markup).toContain('aria-describedby="status-grid-summary"');
+    expect(markup).toContain('aria-describedby="primary-action-desc"');
+    expect(markup).toContain('aria-describedby="secondary-why-setup-desc"');
+    expect(markup).toContain('aria-describedby="secondary-report-issue-desc"');
+    expect(markup).toContain('id="privacy-panel-description"');
+    expect(markup).toContain('class="sr-only"');
   });
 
   it('defines focus-visible and dark-theme styling hooks for the popup shell', () => {
@@ -32,5 +40,7 @@ describe('PopupShell', () => {
     expect(stylesheet).toContain('.secondary-button:focus-visible');
     expect(stylesheet).toContain('@media (prefers-color-scheme: dark)');
     expect(stylesheet).toContain('--accent: #53c1cb;');
+    expect(stylesheet).toContain('.sr-only');
+    expect(stylesheet).toContain('.secondary-actions__item button');
   });
 });

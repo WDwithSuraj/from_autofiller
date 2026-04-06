@@ -9,5 +9,7 @@ describe('App integration', () => {
 
     expect(markup).toContain('Setup required before autofill');
     expect(markup).toContain('No account or cloud sync in v1.');
+    expect(markup).toContain('aria-describedby="popup-summary"');
+    expect(markup).toContain('primary-action-desc');
   });
 });
